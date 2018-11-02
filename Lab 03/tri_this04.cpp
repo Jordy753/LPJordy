@@ -6,7 +6,8 @@
 
 using namespace std;
 
-int main(){
+int main()
+try{
 	double a=0,b=0,c=0,determinante;
 	cout<<"ax^2+bx+c=0"<<"\n";
 	cin>>a>>b>>c;
@@ -15,16 +16,19 @@ int main(){
 	if(a!=0){
 		determinante=pow(b,2)-4*a*c;
 		if(determinante<0){
-			cout<<"Oops! Las raices de dicha ecuacion cuadratica son numeros imaginarios\n";
+      throw runtime_error("Oops! Las raices de dicha ecuacion cuadratica son numeros imaginarios\n");
 		}
 		else{
 			cout<<"Una de las respuestas es: "<<(-b+sqrt(determinante))/2*a<<"\n";
 			cout<<"La otra es respuesta es: "<<(-b-sqrt(determinante))/2*a<<"\n";
 		}
 	}
-	else{
-		cout<<"No se puede resolver la ecuacion cuadratica\n";
-	}
-	
-	
+	if(a==0){
+    throw runtime_error("El valor de a no puede tener como valor el numero 0\n"); 
+		}
+}
+
+catch(exception & e){
+  cerr<<"error: "<<e.what()<<"\n";
+  return 1;
 }
