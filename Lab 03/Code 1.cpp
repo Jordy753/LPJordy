@@ -1,0 +1,19 @@
+#include<iostream>
+#include<string>
+#include<vector>
+
+using namespace std;
+
+int area(int length, int width)
+
+int area(double length0, double width0){
+	return length*width;
+}
+
+int main(){
+	int s1=area(7;  // error: falta )
+	int s1=area(7)  // error: falta ;
+	Int s3=area(7); // error: Int no es un tipo
+	int s4=area('7); // error: caracter falta '
+	return area(4,4);  
+}
