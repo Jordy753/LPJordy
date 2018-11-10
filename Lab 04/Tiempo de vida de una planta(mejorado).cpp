@@ -1,4 +1,5 @@
 //Tiempo de vida de una planta
+//Configurado para solo el uso de dos vectores de las cuales son: la vida de cada planta y aquellas que ya estan muertas 
 
 #include<iostream>
 #include<string>
@@ -18,43 +19,38 @@ int buscar(int i,vector<int> muertas){
 
 int main(){
   int a,b,c,x1,x2; //dias_vida cuantas_vecs cantidad
-  vector<int> plantas;
   vector<int> muertas;
 
   while(cin>>a>>b>>c){
-  	plantas.clear();
+  	muertas.clear();
     vector<int> vida(c);
 
     for(int i=1;i<=c;i++){
-      plantas.push_back(i);
-      cout<<plantas[i-1]<<" ";
+      cout<<i<<" ";
     }
     
     cout<<"\n";
     
     while(b!=0){
       cin>>x1>>x2;
-      for(int i=0;i<plantas.size();i++){
-        if((plantas[x1-1]>plantas[i])||(plantas[i]>plantas[x2-1])){
-          vida[i]=vida[i]+1;
-          if(vida[i]==a){
-            muertas.push_back(plantas[i]);
+      for(int i=1;i<=c;i++){
+        if((x1>i)||(i>x2)){
+          vida[i-1]=vida[i-1]+1;
+          if(vida[i-1]==a){
+            muertas.push_back(i);
           }
         }
         else{
-          vida[i]=0;
+          vida[i-1]=0;
         }
       }
      b=b-1;
     }
     
-	plantas.clear();
+
     for(int i=1;i<=c;i++){
     	if(buscar(i,muertas)==1)
-            plantas.push_back(i);
-    }
-    for(int i=0;i<plantas.size();i++){
-    	cout<<plantas[i]<<" ";
+            cout<<i<<" ";
     }
 	cout<<"\n";
   }
