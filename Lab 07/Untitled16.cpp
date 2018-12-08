@@ -6,7 +6,7 @@ struct Link{
   Link* succ;
   Link(const string& v, Link* p=0, Link* s=0):value(v),prev(p),succ(s){}
 };
-//Inserta n antes de p (incompleta)
+//Inserta n antes de p (incompleto)
 Link* insert(Link* p,Link* n){
   n->succ=p;    //p viene despues de n
   p->prev->succ=n;  //n viene despues de lo que solia ser el anterior de p
